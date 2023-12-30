@@ -6,7 +6,7 @@ Detector de presencia mediante beacons usando un esp32 programado en Arduino IDE
 2. Abrir el IDE y dejar que se instalen todas las librerías base.
 3. Añadir placas extra al IDE, de la siguiente forma:
    - Archivo -> Preferencias -> Gestor de placas adicionales.
-   - Aqui añadir las siguientes URLs:
+   - Aquí añadir las siguientes URLs:
        - `https://dl.espressif.com/dl/package_esp32_index.json`
        - `https://resource.heltec.cn/download/package_heltec_esp32_index.json`
     - Confirmar la selección y volver al inicio del IDE.

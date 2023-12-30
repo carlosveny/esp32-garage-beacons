@@ -1,12 +1,15 @@
 #include <Arduino.h>
 #include "Printer.h"
 
-char* Printer::sprintf(const char *format, ...){
-  const int SIZE = 80;
-  char* buffer = new char[SIZE];
+Printer::Printer(int size) {
+  _size = size;
+}
+
+char* Printer::sprintf(const char *format, ...) {
+  char* buffer = new char[_size];
   va_list args;
   va_start(args, format);
-  vsnprintf(buffer, SIZE, format, args);
+  vsnprintf(buffer, _size, format, args);
   va_end(args);
   return buffer;
 }
