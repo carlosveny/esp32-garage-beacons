@@ -9,6 +9,9 @@ Elementos necesarios para ejecutar la app:
 
 Si se quiere realizar la integración con KNX se require una BCU (en mi caso, Siemens 5WG1117-2AB12).
 
+### Dependencias
+Es necesario instalar la librería [esp32-tpuart](https://github.com/carlosveny/esp32-tpuart) para la comunicación con el bus KNX. Esta librería es un fork de [arduino-tpuart](https://github.com/Domos-Snips/arduino-tpuart) para que funcione sobre un ESP32.
+
 ### Instalación Arduino IDE para ESP32
 1. Descargar [Arduino IDE](https://www.arduino.cc/en/software). En este caso se ha usado el nuevo IDE 2.0.
 2. Abrir el IDE y dejar que se instalen todas las librerías base.
@@ -27,9 +30,6 @@ Si se quiere realizar la integración con KNX se require una BCU (en mi caso, Si
 7. Seleccionar el puerto donde está conectado el esp32 de la siguiente forma:
     - Herramientas -> Puerto -> *seleccionar donde está el esp32*
 8. Lanzar el programa al esp32.
-
-### Dependencias
-Es necesario instalar la librería [esp32-tpuart](https://github.com/carlosveny/esp32-tpuart) para la comunicación con el bus KNX. Esta librería es un fork de [arduino-tpuart](https://github.com/Domos-Snips/arduino-tpuart) para que funcione sobre un ESP32.
 
 ## Funcionamiento
 La app se encarga de realizar escaneos, dados unos parámetros de configuración, con la finalidad de encontrar determinados beacons. Cada beacon se encuentra dentro de un coche, por lo que si la app detecta un beacon, significa que el coche asociado se encuentra en el garaje.
