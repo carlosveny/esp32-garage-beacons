@@ -3,8 +3,8 @@
 #include <BLEScan.h>
 #include <BLEAdvertisedDevice.h>
 #include <KnxTpUart.h>
-#include "Printer.h"
-#include "Config.h"
+#include "Printer/Printer.h"
+#include "Config/Config.h"
 
 const int TOTAL_ELEMENTS = sizeof(BLE_ADDRESSES) / sizeof(BLE_ADDRESSES[0]);
 const int TOTAL_SCANS = TOTAL_SECONDS_SCANNING / (NUMBER_OF_SCANS * SCAN_TIME);
