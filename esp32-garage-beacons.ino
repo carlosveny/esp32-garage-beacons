@@ -24,7 +24,7 @@ class AdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
         if (!foundAddresses[i]) {
           foundAddresses[i] = true;
           Serial.println(Printer.sprintf("\t\t[KNX] Sent 1 to %s", KNX_ADDRESSES[i]));
-          // knx.groupWriteBool(KNX_ADDRESSES[i], true);
+          knx.groupWriteBool(KNX_ADDRESSES[i], true);
         }
       }
     }
@@ -34,7 +34,7 @@ class AdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
 void serialEvent2() {
   KnxTpUartSerialEventType eType = knx.serialEvent();
   if (eType == TPUART_RESET_INDICATION) {
-    Serial.println("\n[KNX] Waiting for KNX signal to start scaning...");
+    Serial.println("\n[KNX] Waiting for KNX signal to start scanning...");
   } else if (eType == KNX_TELEGRAM) {
     KnxTelegram* telegram = knx.getReceivedTelegram();
     String target = String(0 + telegram->getTargetMainGroup()) + "/" + String(0 + telegram->getTargetMiddleGroup()) + "/" + String(0 + telegram->getTargetSubGroup());
@@ -54,6 +54,10 @@ void setup() {
   Serial.begin(115200);
   Serial.println("\n\n------------------------------------------------");
   Serial.println("[INFO] esp32-garage-beacons started");
+
+  // Init Digital Pins
+  pinMode(PIN_LED, OUTPUT);
+  pinMode(PIN_BUTTON, INPUT_PULLUP);
 
   // Check configs
   if (!areVariablesValid()) {
@@ -77,16 +81,21 @@ void setup() {
     pBLEScan->setWindow(1999);  // Less or equal setInterval value
 
     if (START_SCANNING) {
-      Serial.println("\n[INFO] Start Scan Loop because of configuration");
+      Serial.println("\n[INFO] Starting Scan Loop because of configuration");
       startScanLoop();
     }
   }
 }
 
 void loop() {
+  if (digitalRead(PIN_BUTTON) == LOW) {
+    Serial.println("\n[INFO] Starting Scan Loop because of button input");
+    startScanLoop();
+  }
 }
 
 void startScanLoop() {
+  digitalWrite(PIN_LED, HIGH);
   for (int z = 0; z < TOTAL_SCANS; z++) {
     Serial.println(Printer.sprintf("\n[INFO] Start round of scans %i/%i", z + 1, TOTAL_SCANS));
     resetFoundAddresses();
@@ -99,10 +108,10 @@ void startScanLoop() {
     Serial.println("\t[INFO] Scans done, sending zeros to KNX");
     sendZerosToKnx();
     Serial.println(Printer.sprintf("[INFO] Round of scans %i/%i done", z + 1, TOTAL_SCANS));
-
-    Serial2.begin(19200, SERIAL_8E1);
-    knx.uartReset();
   }
+  Serial2.begin(19200, SERIAL_8E1);
+  knx.uartReset();
+  digitalWrite(PIN_LED, LOW);
 }
 
 // Function that checks if variables are valid
