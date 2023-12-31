@@ -11,7 +11,7 @@ const int TOTAL_SCANS = TOTAL_SECONDS_SCANNING / (NUMBER_OF_SCANS * SCAN_TIME);
 BLEScan* pBLEScan;
 boolean* foundAddresses;
 Printer Printer(60);
-KnxTpUart knx(&Serial2, "15.15.232");  // Initialize the KNX TP-UART library on the Serial port
+KnxTpUart knx(&Serial2, KNX_IP_ADDRESS);  // Initialize the KNX TP-UART library on the Serial port
 
 class AdvertisedDeviceCallbacks : public BLEAdvertisedDeviceCallbacks {
   void onResult(BLEAdvertisedDevice advertisedDevice) {

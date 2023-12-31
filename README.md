@@ -52,7 +52,8 @@ Cabe recordar que la plantilla de configuración se encuentra en el archivo `Con
 | TOTAL_SECONDS_SCANNING | Total de segundos durante los cuales se van a estar realizando escaneos |
 | NUMBER_OF_SCANS | Número de sub-escaneos que componen 1 escaneo completo (para evitar falsos negativos) |
 | SCAN_TIME | Total de segundos que dura un sub-escaneo |
-| START_SCANNING | Si es `true` la app empieza realizando un escaneo inicial. |
+| START_SCANNING | Si es `true` la app empieza realizando un escaneo inicial |
+| KNX_IP_ADDRESS | Dirección IP para identificar al ESP32 en el bus KNX
 | BLE_ADDRESSES | Array de direcciones MAC de cada uno de los beacons a detectar |
 | KNX_ADDRESSES | Array de direcciones KNX asociadas a cada uno de los beacons. Debe tener la misma longitud que *BLE_ADDRESSES*, y el orden determina la asociación con el mismo |
 | KNX_READ_ADDRESSES | Array de direcciones KNX que se escuchan para iniciar los escaneos |
