@@ -3,7 +3,7 @@
 #include <BLEScan.h>
 #include <BLEAdvertisedDevice.h>
 #include <KnxTpUart.h>
-#include "Printer/Printer.h"
+#include "src/Printer/Printer.h"
 #include "Config/Config.h"
 
 const int TOTAL_ELEMENTS = sizeof(BLE_ADDRESSES) / sizeof(BLE_ADDRESSES[0]);
