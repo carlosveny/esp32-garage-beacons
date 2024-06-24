@@ -130,8 +130,8 @@ void resetFoundAddresses() {
 // Function that performs a BLE Scan
 void scan(int idx) {
   Serial.println(Printer.sprintf("\t[INFO] Start scan %i/%i", idx + 1, NUMBER_OF_SCANS));
-  BLEScanResults foundDevices = pBLEScan->start(SCAN_TIME, false);
-  Serial.println(Printer.sprintf("\t[INFO] Scan %i/%i done! Devices found: %i", idx + 1, NUMBER_OF_SCANS, foundDevices.getCount()));
+  BLEScanResults* foundDevices = pBLEScan->start(SCAN_TIME, false);
+  Serial.println(Printer.sprintf("\t[INFO] Scan %i/%i done! Devices found: %i", idx + 1, NUMBER_OF_SCANS, foundDevices->getCount()));
   pBLEScan->clearResults();
 }
 
