@@ -23,7 +23,7 @@ Es necesario instalar la librería [esp32-tpuart](https://github.com/carlosveny/
     - Confirmar la selección y volver al inicio del IDE.
 4. Instalar el software de nuestra placa de la siguiente forma:
     - Herramientas -> Placas -> Gestor de placas.
-    - Buscar **esp32** e instalar la de **Espressif**.
+    - Buscar **esp32** e instalar la de **Espressif** (testeado con la v3.0.1)
 5. Conectar el esp32 al ordendador mediante el cable USB-C (comprobar que sea un cable de datos y no solo de carga).
 6. Seleccionar nuestra placa en Arduino IDE de la siguiente forma:
     - Herramientas -> Placa -> esp32 -> ESP32-WROOM-DA Module. *(cambiar la placa según la que se tenga)*.
